@@ -2,7 +2,6 @@ import {Layout} from "@/components/custom/layout";
 import {UserNav} from "@/components/user-nav";
 
 export default function Dashboard() {
-	console.log("RENDER DASHBOARD");
 	return (
 		<Layout>
 			{/* ===== Top Heading ===== */}

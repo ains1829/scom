@@ -1,0 +1,15 @@
+export const units = [
+	{value: "t", label: "Tonne"},
+	{value: "kg", label: "Kilogramme"},
+	{value: "g", label: "Gramme"},
+	{value: "l", label: "Litre"},
+	{value: "cl", label: "Centilitre"},
+	{value: "ml", label: "Millilitre"},
+	{value: "m", label: "Mètre"},
+	{value: "cm", label: "Centimètre"},
+	{value: "mm", label: "Millimètre"},
+	{value: "m2", label: "Mètre carré"},
+	{value: "cm2", label: "Centimetre carré"},
+	{value: "m3", label: "Mètre cube"},
+	{value: "cm3", label: "Centimetre cube"},
+];
