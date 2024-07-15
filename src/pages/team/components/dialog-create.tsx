@@ -37,7 +37,6 @@ const allMembers: string[] = [
 type Props = {
 	isCreateModalOpen: boolean;
 	setIsCreateModalOpen: (value: boolean) => void;
-	leaders: string[];
 };
 
 const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
