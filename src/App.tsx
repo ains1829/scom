@@ -12,6 +12,7 @@ import Companies from "./pages/company/index";
 import Personnel from "./pages/manage-users/personnel";
 import Administrator from "./pages/manage-users/admin";
 import Anomaly from "./pages/anomaly";
+import Team from "./pages/team";
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 					<Route path="/products" element={<ManageProducts />} />
 					<Route path="/personnel" element={<Personnel />} />
 					<Route path="/administrator" element={<Administrator />} />
+					<Route path="/teams" element={<Team />} />
 					<Route path="/companies" element={<Companies />} />
 					<Route path="/anomalies" element={<Anomaly />} />
 				</Route>

@@ -6,6 +6,7 @@ import {
 	IconUsersGroup,
 	IconBuildings,
 	IconZoomExclamation,
+	IconUsers,
 } from "@tabler/icons-react";
 
 export interface NavLink {
@@ -42,7 +43,7 @@ export const sidelinks: SideLink[] = [
 				title: "Personnel",
 				label: "",
 				href: "/personnel",
-				icon: <IconUsersGroup size={18} />,
+				icon: <IconUsers size={18} />,
 			},
 			{
 				title: "Administrateur",
@@ -51,6 +52,12 @@ export const sidelinks: SideLink[] = [
 				icon: <IconUserShield size={18} />,
 			},
 		],
+	},
+	{
+		title: "Equipes",
+		label: "",
+		href: "/teams",
+		icon: <IconUsersGroup size={18} />,
 	},
 	{
 		title: "Sociétés",
