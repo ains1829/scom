@@ -28,7 +28,7 @@ const Signin: FC = () => {
 				</CardContent>
 				<CardFooter className="flex flex-col gap-4 justify-center">
 					<Button className="w-full ">S'inscrire</Button>
-					<a href="signup" className="">
+					<a href="/" className="">
 						Se connecter
 					</a>
 				</CardFooter>

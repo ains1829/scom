@@ -1,15 +1,22 @@
 import {DataTable} from "@/components/table/data-table";
 import {columns} from "./components/columns";
-import {productTypes} from "./data/product-types";
+// import {productTypes} from "./data/product-types";
 import {Button} from "@/components/ui/button";
 import {IconPlus} from "@tabler/icons-react";
 import {useState} from "react";
 import DialogCreate from "./components/dialog-create";
+import { useTypeProduct } from "@/api/query";
 
 export default function ProductType() {
 	const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
+	const Typeproducts = useTypeProduct();
+	if (Typeproducts.isPending) {
+		return <span>loading...</span>
+	}
+	if (Typeproducts.isError) {
+		return <span>Error</span>
+	}
 	return (
 		<>
 			<div className="mb-2 flex items-center justify-between space-y-2">
@@ -21,7 +28,7 @@ export default function ProductType() {
 				</Button>
 			</div>
 			<div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0">
-				<DataTable data={productTypes} columns={columns} />
+				<DataTable data={Typeproducts.data} columns={columns} />
 			</div>
 
 			{/* ===== Create Company Modal ===== */}

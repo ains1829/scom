@@ -17,14 +17,13 @@ function App() {
 	return (
 		<>
 			<Routes>
-				{/* <Route path="/" element={<Navigate to="/signup" />} /> */}
-				<Route path="/signup" element={<Login />} />
+				<Route path="/" element={<Login />} />
 				<Route path="/signin" element={<Signin />} />
 				<Route path="/reset-password" element={<ResetPassword />} />
 				<Route path="/new-password" element={<NewPassword />} />
 
 				<Route element={<AppShell />}>
-					<Route path="/" element={<Dashboard />} />
+					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/products" element={<ManageProducts />} />
 					<Route path="/personnel" element={<Personnel />} />
 					<Route path="/administrator" element={<Administrator />} />

@@ -20,7 +20,7 @@ type Props = {
 };
 
 const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
-	const [selectedUnit, setSelectedUnit] = useState(productTypes[0].name);
+	// const [selectedUnit, setSelectedUnit] = useState(productTypes[0].name);
 	return (
 		<Dialog open={isCreateModalOpen} onOpenChange={setIsCreateModalOpen}>
 			<DialogContent className="!w-[800px] max-h-[90vh] overflow-y-auto">
@@ -34,7 +34,7 @@ const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 						<Label htmlFor="name" className="text-left">
 							Unite
 						</Label>
-						<Select value={selectedUnit} onValueChange={setSelectedUnit}>
+						{/* <Select value={selectedUnit} onValueChange={setSelectedUnit}>
 							<SelectTrigger>
 								<SelectValue>{productTypes.find((productType) => productType.name === selectedUnit)?.name}</SelectValue>
 							</SelectTrigger>
@@ -45,7 +45,7 @@ const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 									</SelectItem>
 								))}
 							</SelectContent>
-						</Select>
+						</Select> */}
 					</div>
 					<div className="flex flex-col gap-1">
 						<Label htmlFor="name" className="text-left">

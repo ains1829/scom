@@ -1,6 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Etudiant } from "../types/Etudiant";
-import { DeleteEtudiant, SaveEtudiants, UpdateEtudiants } from "./api";
+import { Authentification, ChangePassword, DeleteEtudiant, GenerateCoderecuperation, SaveEtudiants, UpdateEtudiants } from "./api";
+import { AuthUser } from "./json/requestbody/AuthUser";
+import { Lostpassword } from "./json/requestbody/Lostpassword";
 
 export function useCreateEtudiants() {
   const queryClient = useQueryClient();
@@ -40,6 +42,37 @@ export function useDeleteEtudiant() {
       } else {
         await queryClient.invalidateQueries({ queryKey : ["etudiants"]})
       }
+    }
+  })
+}
+// scom project
+export function useAuthuser() {
+  return useMutation({
+    mutationFn: (data: AuthUser) => Authentification(data),
+    onSuccess() {
+    },
+    onError(error) {
+      console.log("network error : " + error)
+    }
+  })
+}
+export function useGenerateCode() {
+  return useMutation({
+    mutationFn: (email: string) => GenerateCoderecuperation(email),
+    onSuccess() {
+    },
+    onError(error) {
+      console.log("network error : " + error)
+    }
+  })
+}
+export function useResetPassword() {
+  return useMutation({
+    mutationFn: (data: Lostpassword) => ChangePassword(data),
+    onSuccess() {
+    },
+    onError(error) {
+      console.log("network error : " + error)
     }
   })
 }

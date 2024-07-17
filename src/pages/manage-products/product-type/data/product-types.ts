@@ -1,12 +1,7 @@
-export const productTypes = [
-	{
-		id: "1",
-		unit: "kg",
-		name: "Aliment",
-	},
-	{
-		id: "2",
-		unit: "kg",
-		name: "Boisson",
-	},
-];
+import { UniteTypeschema } from "../../unite/data/schema";
+
+export interface productTypes {
+	idtypeproduct: number;
+	nametypeproduct: string;
+	unite: UniteTypeschema;
+}

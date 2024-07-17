@@ -16,7 +16,7 @@ import {
 
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 
-import {DataTablePagination} from "@/components/table/data-table-pagination";
+// import {DataTablePagination} from "@/components/table/data-table-pagination";
 import {DataTableToolbar} from "../../pages/company/components/data-table-toolbar";
 
 interface DataTableProps<TData, TValue> {
@@ -90,7 +90,7 @@ export function DataTable<TData, TValue>({columns, data, isShowToolbar = false}:
 					</TableBody>
 				</Table>
 			</div>
-			<DataTablePagination table={table} />
+			{/* <DataTablePagination table={table} /> */}
 		</div>
 	);
 }
