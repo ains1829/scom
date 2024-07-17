@@ -3,8 +3,12 @@ import { Etudiant } from "../types/Etudiant";
 import { AuthUser } from "./json/requestbody/AuthUser";
 import { Lostpassword } from "./json/requestbody/Lostpassword";
 import { productTypes } from "@/pages/manage-products/product-type/data/product-types";
+import { product } from "@/pages/manage-products/product/data/products";
+import { UniteTypeschema } from "@/pages/manage-products/unite/data/schema";
+import { Typejsonproduct } from "@/api/json/requestbody/product/Typejsonproduct";
 const BASE_URL = "http://localhost:8080";
 const instanceAxios = axios.create({ baseURL: BASE_URL });
+
 export const getEtudiants = async () =>{
   return (await instanceAxios.get<Etudiant[]>('main/list_etudiant')).data;
 }
@@ -30,4 +34,13 @@ export const ChangePassword = async (data: Lostpassword) => {
 // export const getTypeProduit = 
 export const getProduit_type = async () =>{
   return (await instanceAxios.get<productTypes[]>('data/list-type-product')).data;
+}
+export const getProduit = async () => {
+  return (await instanceAxios.get<product[]>('data/product')).data;
+}
+export const getUnite = async () => {
+  return (await instanceAxios.get<UniteTypeschema[]>('data/unite')).data;
+}
+export const CreateTypeproduct = async (data : Typejsonproduct) => {
+  return (await instanceAxios.post('auth/create', data));
 }

@@ -2,28 +2,28 @@ import {ColumnDef} from "@tanstack/react-table";
 
 import {DataTableColumnHeader} from "@/components/table/data-table-column-header";
 import {DataTableRowActions} from "./data-table-row-actions";
+import { product } from "../data/products";
 
-import {Product} from "../data/schema";
-
-export const columns: ColumnDef<Product>[] = [
+export const columns: ColumnDef<product>[] = [
 	{
-		accessorKey: "id",
+		accessorKey: "idproduct",
 		header: ({column}) => <DataTableColumnHeader column={column} title="ID" />,
-		cell: ({row}) => <div>{row.getValue("id")}</div>,
+		cell: ({row}) => <div>{row.getValue("idproduct")}</div>,
 		enableSorting: false,
 		enableHiding: false,
 	},
 	{
-		accessorKey: "productType",
-		header: ({column}) => <DataTableColumnHeader column={column} title="Type de produit" />,
-		cell: ({row}) => <div>{row.getValue("productType")}</div>,
+		accessorKey: "nameproduct",
+		header: ({column}) => <DataTableColumnHeader column={column} title="Nom du produit" />,
+		cell: ({row}) => <div>{row.getValue("nameproduct")}</div>,
 		enableSorting: true,
 		enableHiding: false,
 	},
 	{
-		accessorKey: "name",
-		header: ({column}) => <DataTableColumnHeader column={column} title="Nom" />,
-		cell: ({row}) => <div>{row.getValue("name")}</div>,
+		accessorFn: (row) => row.typeproduct.nametypeproduct,
+		id:"typeproduct.nametypeproduct",
+		header: ({column}) => <DataTableColumnHeader column={column} title="Type de produit" />,
+		cell: ({row}) => <div>{row.getValue("typeproduct.nametypeproduct")}</div>,
 		enableSorting: true,
 		enableHiding: false,
 	},

@@ -28,6 +28,6 @@ export const columns: ColumnDef<productTypes>[] = [
 	},
 	{
 		id: "actions",
-		cell: ({row}) => <DataTableRowActions row={row} />,
+		cell: ({row}) => <DataTableRowActions id={row.getValue("idtypeproduct")} />,
 	},
 ];

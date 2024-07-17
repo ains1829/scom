@@ -1,8 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Etudiant } from "../types/Etudiant";
-import { Authentification, ChangePassword, DeleteEtudiant, GenerateCoderecuperation, SaveEtudiants, UpdateEtudiants } from "./api";
+import { Authentification, ChangePassword, CreateTypeproduct, DeleteEtudiant, GenerateCoderecuperation, SaveEtudiants, UpdateEtudiants } from "./api";
 import { AuthUser } from "./json/requestbody/AuthUser";
 import { Lostpassword } from "./json/requestbody/Lostpassword";
+import { Typejsonproduct } from "./json/requestbody/product/Typejsonproduct";
 
 export function useCreateEtudiants() {
   const queryClient = useQueryClient();
@@ -73,6 +74,19 @@ export function useResetPassword() {
     },
     onError(error) {
       console.log("network error : " + error)
+    }
+  })
+}
+export function useCreateTypeproduct() {
+  const query = useQueryClient();
+  return useMutation({
+    mutationFn: (data: Typejsonproduct) => CreateTypeproduct(data),
+    onSettled: async (_, error) => {
+      if (error) {
+        console.log(error)
+      } else {
+        await query.invalidateQueries({queryKey:['types-product']})
+      }
     }
   })
 }

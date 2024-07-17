@@ -1,12 +1,6 @@
-export const companies = [
-	{
-		id: "1",
-		productType: "Aliment",
-		name: "Riz",
-	},
-	{
-		id: "2",
-		productType: "Boisson",
-		name: "Eau",
-	},
-];
+import { productTypes } from "../../product-type/data/product-types";
+export interface product{
+	idproduct : number;
+  typeproduct : productTypes;
+  nameproduct : string;
+}
