@@ -30,8 +30,7 @@ export const GenerateCoderecuperation = async (email: string) => {
 }
 export const ChangePassword = async (data: Lostpassword) => {
   return (await instanceAxios.post('auth/resetpassword', data));
-}
-// export const getTypeProduit = 
+} 
 export const getProduit_type = async () =>{
   return (await instanceAxios.get<productTypes[]>('data/list-type-product')).data;
 }
@@ -41,6 +40,19 @@ export const getProduit = async () => {
 export const getUnite = async () => {
   return (await instanceAxios.get<UniteTypeschema[]>('data/unite')).data;
 }
-export const CreateTypeproduct = async (data : Typejsonproduct) => {
-  return (await instanceAxios.post('auth/create', data));
+export const CreateTypeproduct = async (data: Typejsonproduct) => {
+  const token = localStorage.getItem('token');
+  return (await instanceAxios.post('data_save/savetypeproduct', data, {
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  }));
+}
+export const Createproduct = async (data: Typejsonproduct) => {
+  const token = localStorage.getItem('token');
+  return (await instanceAxios.post('data_save/saveproduct', data, {
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  }));
 }

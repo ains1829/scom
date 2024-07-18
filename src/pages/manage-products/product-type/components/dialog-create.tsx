@@ -25,11 +25,14 @@ type Props = {
 const DialogCreate: FC<Props> = ({ isCreateModalOpen, setIsCreateModalOpen }) => {
 	const [selectedUnit, setSelectedUnit] = useState('1');
 	const Unite = usegetUnite();
-	// const newTypeproduct = useCreateTypeproduct();
-	// const { register, handleSubmit } = useForm<Typejsonproduct>();
-	// const handleCreate: SubmitHandler<Typejsonproduct> = (data) => {
-	// 	// newTypeproduct.mutate(data);
-	// }
+	const newTypeproduct = useCreateTypeproduct();
+	const { register, handleSubmit , setValue} = useForm<Typejsonproduct>();
+	const handleCreate: SubmitHandler<Typejsonproduct> =  (data) => {
+		data.id = Number.parseInt(selectedUnit);
+		newTypeproduct.mutate(data);
+		console.log(data)
+		setIsCreateModalOpen(false);
+	}
 	if (Unite.isPending) {
 		return <span>loading....</span>
 	}
@@ -38,56 +41,54 @@ const DialogCreate: FC<Props> = ({ isCreateModalOpen, setIsCreateModalOpen }) =>
 	}
 	return (
 		<Dialog open={isCreateModalOpen} onOpenChange={setIsCreateModalOpen}>
-			{/* <form onSubmit={handleSubmit(handleCreate)}>
 				<DialogContent className="!w-[800px] max-h-[90vh] overflow-y-auto">
 					<DialogHeader>
 						<DialogTitle>Creation d'un type de produit</DialogTitle>
 						<DialogDescription></DialogDescription>
 						<DialogClose />
 					</DialogHeader>
-					<div className="grid gap-4 py-4">
-						<div className="flex flex-col gap-1">
-							<Label htmlFor="name" className="text-left">
-								Unite
-							</Label>
-							<Select {...register("id")} value={selectedUnit.toString()} onValueChange={setSelectedUnit}>
-								<SelectTrigger>
-									<SelectValue>{Unite.data.find((unit) => unit.idunite.toString() === selectedUnit)?.nameunite}</SelectValue>
-								</SelectTrigger>
-								<SelectContent>
-									{Unite.data.map((unit) => (
-										<SelectItem key={unit.idunite} value={unit.idunite.toString()}>
-											{unit.nameunite}
-										</SelectItem>
-									))}
-								</SelectContent>
-							</Select>
+					<form onSubmit={handleSubmit(handleCreate)}>
+						<div className="grid gap-4 py-4">
+							<div className="flex flex-col gap-1">
+								<Label htmlFor="name" className="text-left">
+									Unite
+								</Label>
+								<Select
+									value={selectedUnit.toString()}
+									onValueChange={(value) => {
+										setSelectedUnit(value);
+										setValue("id", Number.parseInt(value)); 
+									}}
+								>
+									<SelectTrigger>
+										<SelectValue>{Unite.data.find((unit) => unit.idunite.toString() === selectedUnit)?.nameunite}</SelectValue>
+									</SelectTrigger>
+									<SelectContent>
+										{Unite.data.map((unit) => (
+											<SelectItem key={unit.idunite} value={unit.idunite.toString()}>
+												{unit.nameunite}
+											</SelectItem>
+										))}
+									</SelectContent>
+								</Select>
+							</div>
+							<div className="flex flex-col gap-1">
+								<Label htmlFor="name" className="text-left">
+									Nom
+								</Label>
+								<Input {...register("name")} id="name" placeholder="Nom" className="col-span-3" />
+							</div>
 						</div>
-						<div className="flex flex-col gap-1">
-							<Label htmlFor="name" className="text-left">
-								Nom
-							</Label>
-							<Input {...register("name")} id="name" placeholder="Nom" className="col-span-3" />
-						</div>
-					</div>
-					<DialogFooter>
-						<div className="flex gap-2">
-							<Button type="submit" variant="outline" onClick={() => setIsCreateModalOpen(false)}>
-								Annuler
-							</Button>
-							<Button
-								type="submit"
-								onClick={(e) => {
-									e.preventDefault(); // Prevent form submission
-									setIsCreateModalOpen(false);
-									console.log("Submit Create");
-								}}>
-								Créer
-							</Button>
-						</div>
-					</DialogFooter>
+						<DialogFooter>
+							<div className="flex gap-2">
+								<Button variant="outline" onClick={() => setIsCreateModalOpen(false)}>
+									Annuler
+								</Button>
+								<Button type="submit">Créer</Button>
+							</div>
+						</DialogFooter>
+					</form>
 				</DialogContent>
-			</form> */}
 		</Dialog>
 	);
 };
