@@ -7,6 +7,7 @@ import {
 	IconBuildings,
 	IconZoomExclamation,
 	IconUsers,
+	IconUserCheck,
 } from "@tabler/icons-react";
 
 export interface NavLink {
@@ -50,6 +51,12 @@ export const sidelinks: SideLink[] = [
 				label: "",
 				href: "/administrator",
 				icon: <IconUserShield size={18} />,
+			},
+			{
+				title: "Validation",
+				label: "",
+				href: "/user-validation",
+				icon: <IconUserCheck size={18} />,
 			},
 		],
 	},

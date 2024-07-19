@@ -30,6 +30,7 @@ function App() {
 					<Route path="/products" element={<ManageProducts />} />
 					<Route path="/personnel" element={<Personnel />} />
 					<Route path="/administrator" element={<Administrator />} />
+					<Route path="/user-validation" element={<Administrator />} />
 					<Route path="/teams" element={<Team />} />
 					<Route path="/companies" element={<Companies />} />
 					<Route path="/companies/:id" element={<Details />} />
