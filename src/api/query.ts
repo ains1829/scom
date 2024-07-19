@@ -8,8 +8,7 @@ export function useEtudiants(){
       queryFn :getEtudiants,
     }
   )
-}
-export function useTypeProduct() {
+}export function useTypeProduct(){
   return useQuery(
     {
       queryKey: ['types-product'],
@@ -33,3 +32,10 @@ export function usegetUnite() {
     }
   )
 }
+// Company
+// export function useCompanies(page = 1, size = 10, filter?: string) {
+// 	return useQuery({
+// 		queryKey: ["companies", page, size],
+// 		queryFn: () => getCompanies(page, size, filter),
+// 	});
+// }

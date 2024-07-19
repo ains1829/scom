@@ -13,6 +13,8 @@ import Personnel from "./pages/manage-users/personnel";
 import Administrator from "./pages/manage-users/admin";
 import Anomaly from "./pages/anomaly";
 import Team from "./pages/team";
+import Details from "./pages/company/components/details";
+import MyProfile from "./pages/profile";
 
 function App() {
 	return (
@@ -30,7 +32,9 @@ function App() {
 					<Route path="/administrator" element={<Administrator />} />
 					<Route path="/teams" element={<Team />} />
 					<Route path="/companies" element={<Companies />} />
+					<Route path="/companies/:id" element={<Details />} />
 					<Route path="/anomalies" element={<Anomaly />} />
+					<Route path="/my-profile" element={<MyProfile />} />
 				</Route>
 			</Routes>
 		</>
