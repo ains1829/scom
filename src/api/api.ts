@@ -6,7 +6,6 @@ import { productTypes } from "@/pages/manage-products/product-type/data/product-
 import { product } from "@/pages/manage-products/product/data/products";
 import { UniteTypeschema } from "@/pages/manage-products/unite/data/schema";
 import { Typejsonproduct } from "@/api/json/requestbody/product/Typejsonproduct";
-import {companies} from "@/pages/company/data/companies";
 const BASE_URL = "http://localhost:8080";
 const instanceAxios = axios.create({ baseURL: BASE_URL });
 export const getEtudiants = async () =>{
