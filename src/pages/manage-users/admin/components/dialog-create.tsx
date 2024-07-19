@@ -13,18 +13,18 @@ import {
 	DialogFooter,
 	DialogClose,
 } from "@/components/ui/dialog";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
-import {Calendar} from "@/components/ui/calendar";
-import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import {cn} from "@/lib/utils";
-import {CalendarIcon} from "lucide-react";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form";
-import {profiles} from "../data/data";
-import {Admin, adminSchema} from "../data/schema";
+// import {Label} from "@/components/ui/label";
+// import {Input} from "@/components/ui/input";
+// import {Button} from "@/components/ui/button";
+// import {Calendar} from "@/components/ui/calendar";
+// import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
+// import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
+// import {cn} from "@/lib/utils";
+// import {CalendarIcon} from "lucide-react";
+// import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+// import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form";
+// import {profiles} from "../data/data";
+// import {Admin, adminSchema} from "../data/schema";
 
 type Props = {
 	isCreateModalOpen: boolean;
@@ -42,15 +42,15 @@ function getImageData(event: ChangeEvent<HTMLInputElement>) {
 const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 	const [date, setDate] = useState<Date>();
 	const [preview, setPreview] = useState("");
-	const [selectedProfile, setSelectedProfile] = useState(profiles[0].value);
-	const form = useForm<Admin>({
-		mode: "onSubmit",
-		resolver: zodResolver(adminSchema),
-	});
+	// const [selectedProfile, setSelectedProfile] = useState(profiles[0].value);
+	// const form = useForm<Admin>({
+	// 	mode: "onSubmit",
+	// 	resolver: zodResolver(adminSchema),
+	// });
 
-	function submitCircleRegistration(value: Admin) {
-		console.log({value});
-	}
+	// function submitCircleRegistration(value: Admin) {
+	// 	console.log({value});
+	// }
 
 	return (
 		<Dialog open={isCreateModalOpen} onOpenChange={setIsCreateModalOpen}>
@@ -60,7 +60,7 @@ const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 					<DialogDescription></DialogDescription>
 					<DialogClose />
 				</DialogHeader>
-				<Form {...form}>
+				{/* <Form {...form}>
 					<form className="space-y-8" onSubmit={form.handleSubmit(submitCircleRegistration)}>
 						<div className="grid gap-4 py-4">
 							<div className="flex flex-col gap-1">
@@ -171,7 +171,7 @@ const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 							</div>
 						</DialogFooter>
 					</form>
-				</Form>
+				</Form> */}
 			</DialogContent>
 		</Dialog>
 	);

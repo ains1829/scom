@@ -4,14 +4,14 @@ import {Row} from "@tanstack/react-table";
 import {Button} from "@/components/custom/button";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 
-import {adminSchema} from "../data/schema";
+// import {adminSchema} from "../data/schema";
 
 interface DataTableRowActionsProps<TData> {
 	row: Row<TData>;
 }
 
 export function DataTableRowActions<TData>({row}: DataTableRowActionsProps<TData>) {
-	const company = adminSchema.parse(row.original);
+	// const company = adminSchema.parse(row.original);
 
 	return (
 		<DropdownMenu>

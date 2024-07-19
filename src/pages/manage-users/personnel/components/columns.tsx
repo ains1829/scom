@@ -3,36 +3,20 @@ import {ColumnDef} from "@tanstack/react-table";
 import {DataTableColumnHeader} from "@/components/table/data-table-column-header";
 import {DataTableRowActions} from "./data-table-row-actions";
 
-import {regions} from "@/pages/company/data/data";
-import {profiles} from "../data/data";
-import {Personnel} from "../data/schema";
+import { Administration } from "../../class/Administration";
 
-export const columns: ColumnDef<Personnel>[] = [
+export const columns: ColumnDef<Administration>[] = [
 	{
-		accessorKey: "id",
-		header: ({column}) => <DataTableColumnHeader column={column} title="ID" />,
-		cell: ({row}) => <div>{row.getValue("id")}</div>,
-		enableSorting: false,
-		enableHiding: false,
-	},
-	{
-		accessorKey: "image",
+		accessorKey: "photo",
 		header: ({column}) => <DataTableColumnHeader column={column} title="Image" />,
-		cell: ({row}) => <img src={row.getValue("image")} alt="Profile" className="h-10 w-10 rounded-full" />,
+		cell: ({row}) => <img src={row.getValue("photo")} alt="Profile" className="h-10 w-10 rounded-full" />,
 		enableSorting: false,
 		enableHiding: false,
 	},
 	{
-		accessorKey: "name",
+		accessorKey: "nameadministration",
 		header: ({column}) => <DataTableColumnHeader column={column} title="Nom" />,
-		cell: ({row}) => <div>{row.getValue("name")}</div>,
-		enableSorting: true,
-		enableHiding: false,
-	},
-	{
-		accessorKey: "firstName",
-		header: ({column}) => <DataTableColumnHeader column={column} title="Prénom" />,
-		cell: ({row}) => <div>{row.getValue("firstName")}</div>,
+		cell: ({row}) => <div>{row.getValue("nameadministration")}</div>,
 		enableSorting: true,
 		enableHiding: false,
 	},
@@ -44,13 +28,6 @@ export const columns: ColumnDef<Personnel>[] = [
 		enableHiding: false,
 	},
 	{
-		accessorKey: "telephone",
-		header: ({column}) => <DataTableColumnHeader column={column} title="Téléphone" />,
-		cell: ({row}) => <div>{row.getValue("telephone")}</div>,
-		enableSorting: true,
-		enableHiding: false,
-	},
-	{
 		accessorKey: "email",
 		header: ({column}) => <DataTableColumnHeader column={column} title="Email" />,
 		cell: ({row}) => <div>{row.getValue("email")}</div>,
@@ -58,46 +35,36 @@ export const columns: ColumnDef<Personnel>[] = [
 		enableHiding: false,
 	},
 	{
-		accessorKey: "region",
-		header: ({column}) => <DataTableColumnHeader column={column} title="Region" />,
-		cell: ({row}) => {
-			const region = regions.find((region) => region.value === row.getValue("region"));
-
-			if (!region) {
-				return null;
-			}
-
-			return (
-				<div className="flex w-[100px] items-center">
-					{region.icon && <region.icon className="mr-2 h-4 w-4 text-muted-foreground" />}
-					<span>{region.label}</span>
-				</div>
-			);
-		},
-		filterFn: (row, id, value) => {
-			return value.includes(row.getValue(id));
-		},
+		
+		accessorKey: "telephone",
+		header: ({column}) => <DataTableColumnHeader column={column} title="Telephone" />,
+		cell: ({row}) => <div>{row.getValue("telephone")}</div>,
+		enableSorting: true,
+		enableHiding: false,
 	},
 	{
-		accessorKey: "profile",
-		header: ({column}) => <DataTableColumnHeader column={column} title="Profil" />,
-		cell: ({row}) => {
-			const profile = profiles.find((profile) => profile.value === row.getValue("profile"));
-
-			if (!profile) {
-				return null;
-			}
-
-			return (
-				<div className="flex items-center">
-					{profile.icon && <profile.icon className="mr-2 h-4 w-4 text-muted-foreground" />}
-					<span>{profile.label}</span>
-				</div>
-			);
-		},
-		filterFn: (row, id, value) => {
-			return value.includes(row.getValue(id));
-		},
+		accessorFn: (row) => row.region.province.nameprovince,
+		id: "region.province.nameprovince",
+		header: ({ column }) => <DataTableColumnHeader column={column} title="Province" />,
+		cell: ({row}) => <div>{row.getValue("region.province.nameprovince")}</div>,
+		enableSorting: true,
+		enableHiding: false,
+	},
+	{
+		accessorFn: (row) => row.region.nameregion,
+		id: "region.nameregion",
+		header: ({ column }) => <DataTableColumnHeader column={column} title="Region" />,
+		cell: ({row}) => <div>{row.getValue("region.nameregion")}</div>,
+		enableSorting: true,
+		enableHiding: false,
+	},
+	{
+		accessorFn: (row) => row.profil.description,
+		id: "profil.description",
+		header: ({ column }) => <DataTableColumnHeader column={column} title="Region" />,
+		cell: ({row}) => <div>{row.getValue("profil.description")}</div>,
+		enableSorting: true,
+		enableHiding: false,
 	},
 	{
 		id: "actions",
