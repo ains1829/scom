@@ -4,17 +4,17 @@ import {Button} from "@/components/ui/button";
 import {IconPlus} from "@tabler/icons-react";
 import {useState} from "react";
 import DialogCreate from "./components/dialog-create";
-import { usegetProduct } from "@/api/query";
+import {useGetProduct} from "@/api/query";
 
 export default function Product() {
 	const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-	const Product = usegetProduct();
+	const Product = useGetProduct();
 	if (Product.isPending) {
-		return <span>loadin...</span>
+		return <span>loadin...</span>;
 	}
 	if (Product.isError) {
-		return <span>Error...</span>
+		return <span>Error...</span>;
 	}
 	return (
 		<>
