@@ -54,7 +54,7 @@ export function DataTable<TData, TValue>({columns, data, isShowToolbar = false}:
 	});
 
 	return (
-		<div className="space-y-4">
+		<>
 			{isShowToolbar && <DataTableToolbar table={table} />}
 			<div className="rounded-md border">
 				<Table>
@@ -90,7 +90,7 @@ export function DataTable<TData, TValue>({columns, data, isShowToolbar = false}:
 					</TableBody>
 				</Table>
 			</div>
-			{/* <DataTablePagination table={table} /> */}
-		</div>
+			{/* <DataTablePagination table={table} /> */}{" "}
+		</>
 	);
 }

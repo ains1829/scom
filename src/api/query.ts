@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { getEtudiants, getProduit, getProduit_type, getUnite} from "./api"
-
+import {getCompanies, getEtudiants, getProduit, getProduit_type, getUnite} from "./api"
 export function useEtudiants(){
   return useQuery(
     {
@@ -32,4 +31,10 @@ export function usegetUnite() {
       queryFn : getUnite,
     }
   )
+}
+export function useCompanies(page = 1, size = 10, filter?: string) {
+	return useQuery({
+		queryKey: ["companies", page, size],
+		queryFn: () => getCompanies(page, size, filter),
+	});
 }
