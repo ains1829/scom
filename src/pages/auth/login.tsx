@@ -26,7 +26,7 @@ const Login: FC = () => {
 	const {register, handleSubmit} = useForm<AuthUser>();
 	return (
 		<div className="flex justify-center items-center h-screen w-screen bg-background overflow-y-hidden">
-			<div className="relative max-w-md:hidden flex flex-col justify-center items-center w-1/2 h-full bg-primary text-primary-foreground">
+			<div className="relative md:flex hidden  flex-col justify-center items-center w-1/2 h-full bg-primary text-primary-foreground z-10">
 				<img src={Wareframe1} alt="wireframe" className="w-full z-0 absolute rotate-12 -top-[45%] right-[-20%]" />
 				<img src={Wareframe1} alt="wireframe" className="w-full z-0 absolute -rotate-180 bottom-[-50%] left-[-10%]" />
 				<div className="flex flex-col gap-y-10 mx-20">
@@ -41,8 +41,8 @@ const Login: FC = () => {
 					</p>
 				</div>
 			</div>
-			<div className="w-1/2 h-full flex flex-col justify-center items-center z-20">
-				<img src={ImageMIC} alt="mic" className="w-1/3" />
+			<div className=" md:w-1/2 w-full h-full flex flex-col justify-center items-center z-20">
+				<img src={ImageMIC} alt="mic" className="md:w-1/3 w-3/4" />
 				<Card className=" max-w-sm p-2">
 					<CardHeader>
 						<CardTitle className="text-2xl text-center">Connexion</CardTitle>
