@@ -1,52 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Etudiant } from "../types/Etudiant";
-import { Authentification, ChangePassword, CreateTypeproduct, Createproduct, DeleteEtudiant, GenerateCoderecuperation, SaveEtudiants, UpdateEtudiants } from "./api";
+import { Authentification, ChangePassword, CreateTypeproduct, Createnomaly, Createproduct, GenerateCoderecuperation } from "./api";
 import { AuthUser } from "./json/requestbody/AuthUser";
 import { Lostpassword } from "./json/requestbody/Lostpassword";
 import { Typejsonproduct } from "./json/requestbody/product/Typejsonproduct";
 
-export function useCreateEtudiants() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: (data: Etudiant) => SaveEtudiants(data),
-    onSettled: async (_ , error) => {
-      console.log('settled');
-      if (error) {
-        console.log(error)
-      } else {
-        await queryClient.invalidateQueries({queryKey : ["etudiants"]})
-      }
-    }
-  } 
-  )
-}
-export function useUpdateEtudiants() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: (data: Etudiant) => UpdateEtudiants(data),
-    onSettled: async (_, error) => {
-      if (error) {
-        console.log('error')
-      } else {
-        await queryClient.invalidateQueries({ queryKey : ["etudiants"]})
-      }
-    }
-  })
-}
-export function useDeleteEtudiant() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: (id: number) => DeleteEtudiant(id),
-    onSettled: async (_, error) => {
-      if (error) {
-        console.log('error')
-      } else {
-        await queryClient.invalidateQueries({ queryKey : ["etudiants"]})
-      }
-    }
-  })
-}
-// scom project
 export function useAuthuser() {
   return useMutation({
     mutationFn: (data: AuthUser) => Authentification(data),
@@ -99,6 +56,19 @@ export function useCreateproduct() {
         console.log(error)
       } else {
         await query.invalidateQueries({queryKey:['product']})
+      }
+    }
+  })
+}
+export function useCreateanomaly() {
+  const query = useQueryClient();
+  return useMutation({
+    mutationFn: (nameanomaly: string) => Createnomaly(nameanomaly),
+    onSettled: async (_, error) => {
+      if (error) {
+        console.log(error)
+      } else {
+        await query.invalidateQueries({queryKey:['anomaly']})
       }
     }
   })

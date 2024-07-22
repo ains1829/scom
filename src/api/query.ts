@@ -1,11 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {getCompanies, getEtudiants, getProduit, getProduit_type, getUnite} from "./api";
-export function useEtudiants() {
-	return useQuery({
-		queryKey: ["etudiants"],
-		queryFn: getEtudiants,
-	});
-}
+import {getAnomaly, getCompanies, getProduit, getProduit_type, getProfil, getUnite} from "./api";
 export function useTypeProduct() {
 	return useQuery({
 		queryKey: ["types-product"],
@@ -24,11 +18,21 @@ export function useGetUnite() {
 		queryFn: getUnite,
 	});
 }
-
-// Company
 export function useCompanies(page = 1, size = 10, filter?: string) {
 	return useQuery({
 		queryKey: ["companies", page, size],
 		queryFn: () => getCompanies(page, size, filter),
 	});
+}
+export function UseGetProfil() {
+  return useQuery({
+    queryKey: ["profil"],
+    queryFn: getProfil,
+  });
+}
+export function UsegetAnomaly() {
+  return useQuery({
+    queryKey: ['anomaly'],
+    queryFn:getAnomaly
+  })
 }

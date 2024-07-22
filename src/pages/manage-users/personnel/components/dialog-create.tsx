@@ -1,5 +1,4 @@
 "use client";
-
 import {FC, useState, ChangeEvent} from "react";
 import {useForm} from "react-hook-form";
 import {format} from "date-fns";
@@ -25,7 +24,7 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form";
 import {regions} from "@/pages/company/data/data";
 // import {profiles} from "../data/data";
-// import {Personnel, personnelSchema} from "../data/schema";
+import {Personnel, personnelSchema} from "../data/schema";
 
 type Props = {
 	isCreateModalOpen: boolean;
@@ -43,16 +42,16 @@ function getImageData(event: ChangeEvent<HTMLInputElement>) {
 const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 	const [date, setDate] = useState<Date>();
 	const [preview, setPreview] = useState("");
-	// const [selectedRegion, setSelectedRegion] = useState(regions[0].value);
+	const [selectedRegion, setSelectedRegion] = useState(regions[0].value);
 	// const [selectedProfile, setSelectedProfile] = useState(profiles[0].value);
-	// const form = useForm<Personnel>({
-	// 	mode: "onSubmit",
-	// 	resolver: zodResolver(personnelSchema),
-	// });
+	const form = useForm<Personnel>({
+		mode: "onSubmit",
+		resolver: zodResolver(personnelSchema),
+	});
 
-	// function submitCircleRegistration(value: Personnel) {
-	// 	console.log({value});
-	// }
+	function submitCircleRegistration(value: Personnel) {
+		console.log({value});
+	}
 
 	return (
 		<Dialog open={isCreateModalOpen} onOpenChange={setIsCreateModalOpen}>
@@ -62,7 +61,7 @@ const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 					<DialogDescription></DialogDescription>
 					<DialogClose />
 				</DialogHeader>
-				{/* <Form {...form}>
+				<Form {...form}>
 					<form className="space-y-8" onSubmit={form.handleSubmit(submitCircleRegistration)}>
 						<div className="grid gap-4 py-4">
 							<div className="flex flex-col gap-1">
@@ -168,7 +167,7 @@ const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 								<Label htmlFor="profile" className="text-left">
 									Profil
 								</Label>
-								<Select value={selectedProfile} onValueChange={setSelectedProfile}>
+								{/* <Select value={selectedProfile} onValueChange={setSelectedProfile}>
 									<SelectTrigger>
 										<SelectValue>{profiles.find((profile) => profile.value === selectedProfile)?.label}</SelectValue>
 									</SelectTrigger>
@@ -179,7 +178,7 @@ const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 											</SelectItem>
 										))}
 									</SelectContent>
-								</Select>
+								</Select> */}
 							</div>
 						</div>
 						<DialogFooter>
@@ -196,7 +195,7 @@ const DialogCreate: FC<Props> = ({isCreateModalOpen, setIsCreateModalOpen}) => {
 							</div>
 						</DialogFooter>
 					</form>
-				</Form> */}
+				</Form>
 			</DialogContent>
 		</Dialog>
 	);

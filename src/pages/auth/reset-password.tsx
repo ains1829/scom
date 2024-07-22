@@ -7,7 +7,7 @@ import { useGenerateCode } from "@/api/mutation";
 import { useNavigate } from "react-router-dom";
 
 const ResetPassword: FC = () => {
-	const [email, setEmail] = useState('');
+	const [email, setEmail] = useState('exemple@gmail.com');
 	const generateCode = useGenerateCode();
 	const navigate = useNavigate();
 	const handleSubmit = async (event : any) => {
